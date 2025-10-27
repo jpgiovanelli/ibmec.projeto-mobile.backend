@@ -1,6 +1,7 @@
-from typing import List, Dict
+from typing import List, Dict, Optional
 from fastapi import UploadFile
 from pydantic import BaseModel
+from pydantic_ai import BinaryContent
 
 
 class QuizQuestion(BaseModel):
@@ -10,5 +11,5 @@ class QuizQuestion(BaseModel):
 
 class CreateAnalysisRequest(BaseModel):
     questions: List[QuizQuestion]
-    images: List[UploadFile]
+    images: Optional[List[BinaryContent]] = None
     others: List[Dict[str, str]]

@@ -47,10 +47,11 @@ async def pydantic_validation_exception_handler(request: Request, exc: Validatio
 
 logger = logging.getLogger('uvicorn')
 
-def validade_request_input_raising_http_exception(
+async def validade_request_input_raising_http_exception(
         skin_data: str,
         images: List[UploadFile],
-):
+) -> CreateAnalysisRequest:
+    #todo clean-code it
     try:
         form_data = CreateAnalysisRequest.model_validate(skin_data)
     except Exception as e:
@@ -60,6 +61,14 @@ def validade_request_input_raising_http_exception(
     if not images:
         logging.warning("Nenhuma imagem fornecida.")
         raise HTTPException(status_code=400, detail="Pelo menos uma imagem é necessária.")
+
+    binary_images = await process_images(images)
+
+    return CreateAnalysisRequest(
+        questions=form_data.questions,
+        images=binary_images,
+        others=form_data.others
+    )
 
 async def process_images(images: List[UploadFile]) -> List[BinaryContent]:
     try:
@@ -80,6 +89,4 @@ async def get_analysis(
         skin_data: str = Form(..., alias="skinData"),
         images: List[UploadFile] = File(...),
 ):
-    validade_request_input_raising_http_exception(skin_data, images)
-
-    binary_images = await process_images(images)
+    create_analysis_request = await validade_request_input_raising_http_exception(skin_data, images)
