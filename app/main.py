@@ -1,9 +1,15 @@
+import logging
+from typing import List
+
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import ValidationError
 from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, HTTPException, Form, File, UploadFile, BackgroundTasks, Depends, Response
 from fastapi.responses import JSONResponse
+
+from app.models.Request import CreateAnalysisRequest
+from app.models.Response import AnalysisResponse
 
 app = FastAPI()
 
@@ -36,3 +42,17 @@ async def pydantic_validation_exception_handler(request: Request, exc: Validatio
             "path": request.url.path,
         }
     )
+
+
+logger = logging.getLogger('uvicorn')
+
+@app.post('/analyze', summary='Creates a new skin analysis', response_model=AnalysisResponse)
+async def get_analysis(
+        skin_data: str = Form(..., alias="skinData"),
+        images: List[UploadFile] = File(...),
+):
+    try:
+        form_data = CreateAnalysisRequest.model_validate(skin_data)
+    except Exception as e:
+        logger.error(f"Erro na validação dos dados do formulário: {e}")
+        raise HTTPException(status_code=400, detail=f"Erro na validação dos dados do formulário: {e}")
