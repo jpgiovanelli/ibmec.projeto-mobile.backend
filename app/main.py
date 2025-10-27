@@ -3,6 +3,7 @@ from typing import List
 
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import ValidationError
+from pydantic_ai import BinaryContent
 from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
 
 from fastapi import FastAPI, Request, HTTPException, Form, File, UploadFile, BackgroundTasks, Depends, Response
@@ -47,8 +48,8 @@ async def pydantic_validation_exception_handler(request: Request, exc: Validatio
 logger = logging.getLogger('uvicorn')
 
 def validade_request_input_raising_http_exception(
-        skin_data: str = Form(..., alias="skinData"),
-        images: List[UploadFile] = File(...),
+        skin_data: str,
+        images: List[UploadFile],
 ):
     try:
         form_data = CreateAnalysisRequest.model_validate(skin_data)
@@ -60,9 +61,25 @@ def validade_request_input_raising_http_exception(
         logging.warning("Nenhuma imagem fornecida.")
         raise HTTPException(status_code=400, detail="Pelo menos uma imagem é necessária.")
 
+async def process_images(images: List[UploadFile]) -> List[BinaryContent]:
+    try:
+        binary_images = []
+        for image in images:
+            binary_images.append(BinaryContent(
+                data=await image.read(),
+                media_type=image.content_type,
+                identifier=image.filename
+            ))
+        return binary_images
+    except Exception as e:
+        logging.error(f"Erro ao processar as imagens: {e}")
+        raise HTTPException(status_code=500, detail="Erro ao processar as imagens.")
+
 @app.post('/analyze', summary='Creates a new skin analysis', response_model=AnalysisResponse)
 async def get_analysis(
         skin_data: str = Form(..., alias="skinData"),
         images: List[UploadFile] = File(...),
 ):
     validade_request_input_raising_http_exception(skin_data, images)
+
+    binary_images = await process_images(images)
