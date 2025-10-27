@@ -46,8 +46,7 @@ async def pydantic_validation_exception_handler(request: Request, exc: Validatio
 
 logger = logging.getLogger('uvicorn')
 
-@app.post('/analyze', summary='Creates a new skin analysis', response_model=AnalysisResponse)
-async def get_analysis(
+def validade_request_input_raising_http_exception(
         skin_data: str = Form(..., alias="skinData"),
         images: List[UploadFile] = File(...),
 ):
@@ -56,3 +55,14 @@ async def get_analysis(
     except Exception as e:
         logger.error(f"Erro na validação dos dados do formulário: {e}")
         raise HTTPException(status_code=400, detail=f"Erro na validação dos dados do formulário: {e}")
+
+    if not images:
+        logging.warning("Nenhuma imagem fornecida.")
+        raise HTTPException(status_code=400, detail="Pelo menos uma imagem é necessária.")
+
+@app.post('/analyze', summary='Creates a new skin analysis', response_model=AnalysisResponse)
+async def get_analysis(
+        skin_data: str = Form(..., alias="skinData"),
+        images: List[UploadFile] = File(...),
+):
+    validade_request_input_raising_http_exception(skin_data, images)
