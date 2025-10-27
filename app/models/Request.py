@@ -9,7 +9,10 @@ class QuizQuestion(BaseModel):
     answer: str
 
 
-class CreateAnalysisRequest(BaseModel):
+class SkinProfileRequest(BaseModel):
     questions: List[QuizQuestion]
-    images: Optional[List[BinaryContent]] = None
     others: List[Dict[str, str]]
+
+class AIRequest(BaseModel):
+    skin_profile: SkinProfileRequest
+    images: Optional[List[BinaryContent]] = None
