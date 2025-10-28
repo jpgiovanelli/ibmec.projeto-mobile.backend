@@ -1,0 +1,32 @@
+### Request to analyze skin
+POST http://localhost:8000/analyze
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="skinData"
+
+{
+  "questions": [
+    {
+      "question": "Qual é o seu tipo de pele?",
+      "answer": "Oleosa"
+    },
+    {
+      "question": "Você tem alguma alergia conhecida?",
+      "answer": "Não"
+    }
+  ],
+  "others": [
+    {
+      "observacao": "Pele sensível a produtos com álcool."
+    }
+  ]
+}
+
+--boundary
+Content-Disposition: form-data; name="images"; filename="Pele-Acneica-como-prevenir-a-acne-e-cuidar-desse-tipo-de-pele-1-scaled-e1654864206472.jpg"
+Content-Type: image/jpeg
+
+< C:\Users\202203377701\Downloads\Pele-Acneica-como-prevenir-a-acne-e-cuidar-desse-tipo-de-pele-1-scaled-e1654864206472.jpg
+
+--boundary--

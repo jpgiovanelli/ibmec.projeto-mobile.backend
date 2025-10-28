@@ -6,7 +6,7 @@ from pydantic import ValidationError
 from pydantic_ai import BinaryContent
 from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
 
-from fastapi import FastAPI, Request, HTTPException, Form, File, UploadFile, BackgroundTasks, Depends, Response
+from fastapi import FastAPI, Request, HTTPException, Form, File, UploadFile, Depends
 from fastapi.responses import JSONResponse
 
 from app.ai.AiServices import analyze_skin
@@ -14,7 +14,6 @@ from app.models.Request import SkinProfileRequest, AIRequest
 from app.models.Response import AnalysisResponse
 
 app = FastAPI()
-
 
 origins = ['*']
 app.add_middleware(
@@ -24,6 +23,7 @@ app.add_middleware(
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
+
 
 @app.exception_handler(ValidationError)
 async def pydantic_validation_exception_handler(request: Request, exc: ValidationError):
@@ -48,21 +48,19 @@ async def pydantic_validation_exception_handler(request: Request, exc: Validatio
 
 logger = logging.getLogger('uvicorn')
 
-async def validade_request_input_raising_http_exception(
-        skin_data: str,
-        images: List[UploadFile],
-):
-    try:
-        SkinProfileRequest.model_validate(skin_data)
-    except Exception as e:
-        logger.error(f"Erro na validação dos dados do formulário: {e}")
-        raise HTTPException(status_code=400, detail=f"Erro na validação dos dados do formulário: {e}")
 
+def get_skin_profile(skin_data: str = Form(..., alias="skinData")) -> SkinProfileRequest:
+    try:
+        return SkinProfileRequest.model_validate_json(skin_data)
+    except ValidationError as e:
+        logger.error(f"Erro na validação dos dados do formulário: {e}")
+        raise HTTPException(status_code=HTTP_422_UNPROCESSABLE_ENTITY, detail=f"Erro na validação dos dados do formulário: {e}")
+
+
+async def process_images(images: List[UploadFile]) -> List[BinaryContent]:
     if not images:
         logging.warning("Nenhuma imagem fornecida.")
         raise HTTPException(status_code=400, detail="Pelo menos uma imagem é necessária.")
-
-async def process_images(images: List[UploadFile]) -> List[BinaryContent]:
     try:
         binary_images = []
         for image in images:
@@ -76,13 +74,12 @@ async def process_images(images: List[UploadFile]) -> List[BinaryContent]:
         logging.error(f"Erro ao processar as imagens: {e}")
         raise HTTPException(status_code=500, detail="Erro ao processar as imagens.")
 
+
 @app.post('/analyze', summary='Creates a new skin analysis', response_model=AnalysisResponse)
 async def get_analysis(
-        skin_data: str = Form(..., alias="skinData"),
+        skin_profile: SkinProfileRequest = Depends(get_skin_profile),
         images: List[UploadFile] = File(...),
 ):
-    await validade_request_input_raising_http_exception(skin_data, images)
-    skin_profile = SkinProfileRequest.model_validate(skin_data)
     images = await process_images(images)
 
     ai_request = AIRequest(

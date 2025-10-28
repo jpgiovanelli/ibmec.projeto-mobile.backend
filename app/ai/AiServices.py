@@ -10,6 +10,7 @@ Você é um dermatologista altamente experiente, especializado em cuidados com a
 Receberá perguntas, respostas e imagens de um paciente relacionadas à saúde e estética facial.
 Com base nessas informações, deve analisar cuidadosamente e responder seguindo exatamente o modelo de resposta fornecido, utilizando uma linguagem técnica, empática e profissional, adequada à prática dermatológica.
 Suas respostas devem ser claras, objetivas e baseadas em evidências clínicas, considerando aspectos como diagnóstico diferencial, possíveis causas, tratamento recomendado e orientações preventivas.
+Todos produtos devem ser buscados no site: https://www.dermage.com.br/
 """
 
 dermage_agent = Agent(
@@ -25,4 +26,4 @@ async def analyze_skin(ai_request: AIRequest) -> AnalysisResponse:
 
     result = await dermage_agent.run(ai_request.images, deps=deps)
 
-    return AnalysisResponse.model_validate(result.output())
+    return AnalysisResponse.model_validate(result.output)
