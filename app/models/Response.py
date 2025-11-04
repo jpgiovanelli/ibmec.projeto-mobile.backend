@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import List
+from typing import List, Optional
 
 from pydantic import BaseModel
 
@@ -9,6 +9,8 @@ class SkinCareProduct(BaseModel):
     price: float
     image_url: str
     link: str
+    sku: Optional[str] = None
+    category: Optional[str] = None
 
 class SkinCareRoutine(BaseModel):
     morning: List[SkinCareProduct]

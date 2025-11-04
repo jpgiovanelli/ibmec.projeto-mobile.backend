@@ -1,0 +1,75 @@
+"""Compose Mousse"": {
+        name: ""Compose Mousse"", 
+        url: ""https://www.dermage.com.br/mousse-de-limpeza-compose/p"", 
+        description: ""Espuma de limpeza facial que limpa suavemente a pele enquanto atua como antioxidante."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/170477-950-950/compose-mousse.png?v=638926036462070000"",
+        category: ""Limpeza"",
+        sku: ""86""
+    }",,,,,,,,,,,,
+,,,,,,,,,,,,
+"""Hyaluage Acqua Filler B3+B5"": {
+        name: ""Hyaluage Acqua Filler B3+B5"", 
+        url: ""https://www.dermage.com.br/hyaluage-acqua-filler/p"", 
+        description: ""Sérum hidratante e anti-idade de uso diário com ação firmadora e redensificadora. Reduz rugas e linhas, hidrata e rejuvenesce a pele."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/170514-950-950/01.jpg?v=638926863861900000"",
+        category: ""Anti Idade"",
+        sku: ""900""
+    }
+",,,,,,,,,,,,
+,,,,,,,,,,,,
+"""Improve C 20"": { 
+        name: ""Improve C 20"", 
+        url: ""https://www.dermage.com.br/antioxidante-facial-improve-c-20/p"", 
+        description: ""Sérum com 20% de vitamina C pura e potente ação antioxidante. Estimula colágeno e elastina, trata rugas finas a moderadas e promove luminosidade."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/159701-950-950/Creme-de-Vitamina-C-para-Rosto-Improve-C-20-Dermage.jpg?v=638779095294430000"",
+        category: ""Anti Idade"",
+        sku: ""143""
+    }",,,,,,,,,,,OU," ""Improve C 10 Biotic Sérum 30g"": { 
+        name: ""Improve C 10 Biotic Sérum 30g"", 
+        url: ""https://www.dermage.com.br/improve-c-10-serum-p15710/p"", 
+        description: ""10% de vitamina C nanoencapsulada e niacinamida, é ideal para a pele oleosa e para os primeiros cuidados anti-idade."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/168307-950-950/IMPROVE-C-10-BIOTIC-SERUM-30G.png"",
+        category: ""Vitamina C"",
+        sku: ""142""
+    }
+"
+,,,,,,,,,,,,
+"""Compose Hidracare"": { 
+        name: ""Compose Hidracare"", 
+        url: ""https://www.dermage.com.br/hidratante-compose-hidracare/p"", 
+        description: ""Hidratação por até 24h com rápida absorção com exclusivo complexo de niacinamida e prebioticos."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/168127-950-950/2024.05.29---DERMAGe04581.jpg"",
+        category: ""Anti Oleosidade"",
+        sku: ""600""
+    }",,,,,,,,,,,,
+,,,,,,,,,,,,
+"Opções Protetor solar: 
+",,,,,,,,,,,,
+,,,,,,,,,,,,
+"""Photoage Mineral Mousse FPS 50"": {
+        name: ""Photoage Mineral Mousse FPS 50"", 
+        url: ""https://www.dermage.com.br/protetor-solar-com-cor-photoage-mineral-fps50/p"", 
+        description: ""Protetor solar mineral com textura fluida que proporciona uma pele uniforme com cobertura leve."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/169385-950-950/PHOTOAGE-MINERAL-FLUIDO.png?v=638821537119070000"",
+        category: ""Proteção Solar"",
+        sku: ""214""
+    }",,,,,,,,,,,,
+,,,,,,,,,,,,
+" ""Photoage Water FPS 50"": {
+        name: ""Photoage Water FPS 50"", 
+        url: ""https://www.dermage.com.br/photoage-water-fps50-filtro-solar-aquoso-sem-cor/p"", 
+        description: ""O filtro solar aquoso revolucionário com FPS50 e PPD20, textura Acqua Fluid ultraleve e toque seco que cria uma película protetora invisível sem resíduo esbranquiçado."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/170037-950-950/1000X1000-I-PHOTOAGE-WATER-2025.png?v=638893319354400000"",
+        category: ""Proteção Solar"",
+        sku: ""497""
+    }",,,,,,,,,,,,
+,,,,,,,,,,,,
+"""Photoage Stick Incolor FPS 99"": {
+        name: ""Photoage Stick Incolor FPS 99"", 
+        url: ""https://www.dermage.com.br/photoage-stick-incolor-fps99/p"", 
+        description: ""O filtro solar aquoso revolucionário com FPS50 e PPD20, textura Acqua Fluid ultraleve e toque seco que cria uma película protetora invisível sem resíduo esbranquiçado."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/170037-950-950/1000X1000-I-PHOTOAGE-WATER-2025.png?v=638893319354400000"",
+        category: ""Proteção Solar"",
+        sku: ""497""
+    }
+",,,,,,,,,,,,
