@@ -13,7 +13,11 @@ from app.ai.AiServices import analyze_skin
 from app.models.Request import SkinProfileRequest, AIRequest
 from app.models.Response import AnalysisResponse
 
-app = FastAPI()
+app = FastAPI(
+    title="Dermage Skin Analysis API",
+    description="API para análise de pele e recomendação personalizada de produtos Dermage",
+    version="1.0.0"
+)
 
 origins = ['*']
 app.add_middleware(
@@ -80,6 +84,19 @@ async def get_analysis(
         skin_profile: SkinProfileRequest = Depends(get_skin_profile),
         images: List[UploadFile] = File(...),
 ):
+    """
+    Analisa a pele do usuário e retorna recomendações personalizadas de produtos.
+    
+    **Parâmetros:**
+    - **skinData** (form-data): JSON com as respostas do quiz
+    - **images** (files): Fotos da pele do usuário
+    
+    **Retorna:**
+    - Scores de análise da pele
+    - Tipo de pele identificado
+    - Preocupações detectadas
+    - Rotina personalizada (manhã e noite) com produtos Dermage
+    """
     images = await process_images(images)
 
     ai_request = AIRequest(
@@ -88,3 +105,13 @@ async def get_analysis(
     )
 
     return await analyze_skin(ai_request)
+
+
+@app.get('/health', summary='Health check')
+async def health_check():
+    """Verifica se a API está funcionando"""
+    return {
+        "status": "ok",
+        "message": "Dermage Skin Analysis API",
+        "version": "1.0.0"
+    }

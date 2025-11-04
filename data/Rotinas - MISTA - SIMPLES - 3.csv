@@ -1,0 +1,50 @@
+" ""Glycolique Sabonete"": {
+        name: ""Glycolique Sabonete"", 
+        url: ""https://www.dermage.com.br/glycolique-sabonete-liquido-p15874/p"", 
+        description: ""Promove limpeza facial profunda enquanto auxilia na desobstrução dos poros."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/168097-950-950/2024.05.29---DERMAGe01336.jpg?v=638604728245300000"",
+        category: ""Limpeza"",
+        sku: ""521""
+    }
+"
+
+"""Hyaluage Poly Complex"": {
+        name: ""Hyaluage Poly Complex"", 
+        url: ""https://www.dermage.com.br/hyaluage-poly-complex-30g-preenchedor-facial/p"", 
+        description: ""Gel-creme com 5 tipos de acido hialuronico para ação antienvelhecimento."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/169104-950-950/HYALUAGE-POLY-COMPLEX_01.png.png"", 
+        category: ""Anti Idade"",
+        sku: ""230""
+    }
+"
+
+"Opções Protetor solar: 
+"
+
+" ""Photoage Water FPS 50"": {
+        name: ""Photoage Water FPS 50"", 
+        url: ""https://www.dermage.com.br/photoage-water-fps50-filtro-solar-aquoso-sem-cor/p"", 
+        description: ""O filtro solar aquoso revolucionário com FPS50 e PPD20, textura Acqua Fluid ultraleve e toque seco que cria uma película protetora invisível sem resíduo esbranquiçado."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/170037-950-950/1000X1000-I-PHOTOAGE-WATER-2025.png?v=638893319354400000"",
+        category: ""Proteção Solar"",
+        sku: ""497""
+    }"
+
+"""Photoage Water Color FPS 60"": {
+        name: ""Photoage Water Color FPS 60"", 
+        url: ""https://www.dermage.com.br/photoage-water-fps50-filtro-solar-aquoso-sem-cor/p"", 
+        description: ""O filtro solar que revolucionou sua proteção diária, agora em versão com cor. Com FPS60 e FPUVA 23, o Photoage Water Color chega com alta proteção UVA/UVB."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/168292-950-950/PHOTOAGE-WATER-COLOR-FPS-60.png?v=638641833471430000"",
+        category: ""Proteção Solar"",
+        sku: ""611""
+    }"
+
+"""Photoage Fluido Antiox FPS 60"": {
+        name: ""Photoage Fluido Antiox FPS 60"", 
+        url: ""https://www.dermage.com.br/protetor-solar-anti-idade-photoage-fps60/p"", 
+        description: ""Protetor solar FPS 60 anti-idade com textura ultrafluida e rápida absorção. Possui complexo antioxidante e hidratante que reduz poros e previne o envelhecimento precoce."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/170037-950-950/1000X1000-I-PHOTOAGE-WATER-2025.png?v=638893319354400000"",
+        category: ""Proteção Solar"",
+        sku: ""497""
+    }
+"

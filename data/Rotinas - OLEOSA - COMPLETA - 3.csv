@@ -1,0 +1,67 @@
+"""Secatriz Salic"": {
+        name: ""Secatriz Salic"", 
+        url: ""https://www.dermage.com.br/sabonete-liquido-facial-secatriz-salic/p"", 
+        description: ""Promove uma Limpeza Facial profunda e eficaz no controle da oleosidade da pele, sem causar agressões ou ressecamentos."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/169611-950-950/2024.05.29---DERMAGe01332.jpg?v=638828270764700000"",
+        category: ""Anti Acne"",
+        sku: ""154""
+    }
+",,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+" ""Improve C 30"": { 
+        name: ""Improve C 30"", 
+        url: ""https://www.dermage.com.br/improve-c30-tratamento-anti-idade-vitamina-c/p"", 
+        description: ""Máxima concentração de vitamina C do Brasil: 30% de vitamina C pura com ação anti-idade intensiva. Combate radicais livres, reduz rugas e linhas, e promove luminosidade e hidratação."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/169836-950-950/IMPROVE-C-30_.png?v=638842244425200000"",
+        category: ""Vitamina C"",
+        sku: ""144""
+    }
+",,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+"""Secatriz Prebio Control"": {
+        name: ""Secatriz Prebio Control"", 
+        url: ""https://www.dermage.com.br/hidratante-pele-oleosa-secatriz-prebio/p"", 
+        description: ""Proporciona o reequilíbrio da microflora cutânea, ajudando no controle da oleosidade enquanto promove a hidratação do rosto de acordo com sua necessidade."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/169381-950-950/2024.05.29---DERMAGe01333.jpg?v=638821529154270000"",
+        category: ""Anti Acne"",
+        sku: ""231""
+    }
+",,,,,,,,,,,,,OU,"""Hyaluage Poly Complex"": {
+        name: ""Hyaluage Poly Complex"", 
+        url: ""https://www.dermage.com.br/hyaluage-poly-complex-30g-preenchedor-facial/p"", 
+        description: ""Gel-creme com 5 tipos de acido hialuronico para ação antienvelhecimento."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/169104-950-950/HYALUAGE-POLY-COMPLEX_01.png.png"", 
+        category: ""Anti Idade"",
+        sku: ""230""
+    }"
+,,,,,,,,,,,,,,
+"Age Inverse Firm & Lift"": { 
+        name: ""Age Inverse Firm & Lift"", 
+        url: ""https://www.dermage.com.br/age-inverse-firm-lift/p"", 
+        description: ""Tratamento de rugas e flacidez."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/169085-950-950/AGE-INVERSE-FIRM-E-LIFT_1000x1000.jpg"", 
+        category: ""Anti Idade"",
+        sku: ""661""
+    }
+",,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+"Opções Protetor solar: 
+",,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+" ""Photoage Water FPS 50"": {
+        name: ""Photoage Water FPS 50"", 
+        url: ""https://www.dermage.com.br/photoage-water-fps50-filtro-solar-aquoso-sem-cor/p"", 
+        description: ""O filtro solar aquoso revolucionário com FPS50 e PPD20, textura Acqua Fluid ultraleve e toque seco que cria uma película protetora invisível sem resíduo esbranquiçado."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/170037-950-950/1000X1000-I-PHOTOAGE-WATER-2025.png?v=638893319354400000"",
+        category: ""Proteção Solar"",
+        sku: ""497""
+    }",,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+"""Photoage Water Color FPS 60"": {
+        name: ""Photoage Water Color FPS 60"", 
+        url: ""https://www.dermage.com.br/photoage-water-fps50-filtro-solar-aquoso-sem-cor/p"", 
+        description: ""O filtro solar que revolucionou sua proteção diária, agora em versão com cor. Com FPS60 e FPUVA 23, o Photoage Water Color chega com alta proteção UVA/UVB."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/168292-950-950/PHOTOAGE-WATER-COLOR-FPS-60.png?v=638641833471430000"",
+        category: ""Proteção Solar"",
+        sku: ""611""
+    }",,,,,,,,,,,,,,
