@@ -12,6 +12,7 @@ class QuizQuestion(BaseModel):
 class SkinProfileRequest(BaseModel):
     questions: List[QuizQuestion]
     others: List[Dict[str, str]]
+    age: Optional[int] = None
 
 class AIRequest(BaseModel):
     skin_profile: SkinProfileRequest
