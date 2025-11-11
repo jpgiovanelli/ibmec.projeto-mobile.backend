@@ -1,22 +1,42 @@
 import os
 import asyncio
 from typing import List
+from dataclasses import dataclass
 
-from pydantic_ai import Agent
+from pydantic_ai import Agent, RunContext
+from pydantic_ai.exceptions import ModelRetry, UnexpectedModelBehavior
 from fastapi import HTTPException
 
 from app.models.Request import SkinProfileRequest, AIRequest
 from app.models.Response import AnalysisResponse, SkinTypes
 
-PROMPT = """  
+
+@dataclass
+class AnalysisDependencies:
+    """Dependencies para o agente de análise de pele."""
+    skin_profile: SkinProfileRequest
+    age: int
+    complexity: str
+
+
+# Prompt base do sistema
+BASE_SYSTEM_PROMPT = """
 Você é um dermatologista altamente experiente, especializado em cuidados com a pele do rosto.
 Receberá perguntas, respostas e imagens de um paciente relacionadas à saúde e estética facial.
 Com base nessas informações, deve analisar cuidadosamente e responder seguindo exatamente o modelo de resposta fornecido, utilizando uma linguagem técnica, empática e profissional, adequada à prática dermatológica.
 Suas respostas devem ser claras, objetivas e baseadas em evidências clínicas, considerando aspectos como diagnóstico diferencial, possíveis causas, tratamento recomendado e orientações preventivas.
 
-Você receberá uma lista de produtos em formato CSV. Use APENAS os produtos dessa lista para montar a rotina de cuidados.
-A lista de produtos foi selecionada especificamente para o tipo de pele e idade do paciente.
-NÃO invente produtos. NÃO busque produtos fora da lista fornecida. Use somente os produtos presentes no CSV.
+IMPORTANTE - PRIORIZAÇÃO DE ANÁLISE:
+- PRIORIZE as respostas do questionário fornecido pelo paciente como base principal da análise
+- Use a análise visual da imagem para COMPLEMENTAR e VALIDAR as informações do questionário
+- Em caso de discrepância entre questionário e imagem, dê PESO MAIOR às respostas do questionário, mas mencione as observações visuais relevantes
+- A combinação de ambas as fontes (questionário + imagem) deve guiar o diagnóstico final
+
+FLUXO DE TRABALHO:
+1. Primeiro, analise a imagem e questionário para determinar o tipo de pele (seca, mista, oleosa ou normal)
+2. Use a tool 'load_products_for_skin_type' passando o tipo de pele identificado
+3. Com os produtos carregados, monte a rotina completa usando APENAS produtos dessa lista
+4. NÃO invente produtos - use somente os retornados pela tool
 
 IMPORTANTE - PADRÃO DE RESPOSTA:
 1. SCORES: Use escala de 0 a 10 (onde 0 = ótimo, sem problemas e 10 = problema grave)
@@ -24,28 +44,86 @@ IMPORTANTE - PADRÃO DE RESPOSTA:
    - Adicione outros scores relevantes se necessário (Firmeza, Sensibilidade, Poros, etc)
 
 2. CONCERNS: Escreva um texto detalhado e técnico (mínimo 3-4 frases) descrevendo:
-   - Observações clínicas da pele com base na imagem e questionário
+   - Observações clínicas da pele com base PRIORITARIAMENTE no questionário e complementadas pela imagem
    - Diagnóstico das condições identificadas
    - Objetivos do tratamento proposto
    - Use terminologia médica adequada (pápulas, pústulas, eritema, hiperpigmentação, etc)
 
 3. ROUTINE: Para cada produto, forneça:
-   - title: Nome exato do produto do CSV
+   - title: Nome exato do produto da lista
    - description: Descrição expandida incluindo COMO USAR o produto (seja específico: "Aplique 3-5 gotas...", "Aplique sobre a pele úmida...", etc)
    - price: Use um valor placeholder como 100
-   - image_url: URL exata da imagem do CSV
-   - link: URL exato do produto do CSV
+   - image_url: URL exata da imagem
+   - link: URL exato do produto
 
 Mantenha sempre este padrão consistente em todas as respostas.
 """
 
-dermage_agent = Agent(
+
+# Criação do agente com system prompt dinâmico
+dermage_agent = Agent[AnalysisDependencies, AnalysisResponse](
     "google-gla:gemini-2.5-pro",
-    deps_type=SkinProfileRequest,
-    output_type=AnalysisResponse,
-    system_prompt=PROMPT,
-    retries=3
+    deps_type=AnalysisDependencies,
+    retries=2,
 )
+
+
+@dermage_agent.tool
+async def load_products_for_skin_type(
+    ctx: RunContext[AnalysisDependencies],
+    skin_type: str
+) -> str:
+    """
+    Carrega o catálogo de produtos específico para um tipo de pele.
+    
+    Args:
+        skin_type: O tipo de pele identificado. Deve ser: 'seca', 'mista', 'oleosa' ou 'normal'
+    
+    Returns:
+        String com a lista de produtos disponíveis para esse tipo de pele
+    """
+    # Validar e converter tipo de pele
+    skin_type_lower = skin_type.lower()
+    
+    try:
+        # Mapear para o enum
+        skin_type_enum = SkinTypes(skin_type_lower)
+    except ValueError:
+        return f"Erro: Tipo de pele '{skin_type}' inválido. Use: seca, mista, oleosa ou normal"
+    
+    try:
+        # Carregar produtos apenas para este tipo de pele
+        routine_file = get_routine_file(skin_type_enum, ctx.deps.age, ctx.deps.complexity)
+        products_data = load_products_csv(routine_file)
+        
+        return f"""
+=== PRODUTOS DISPONÍVEIS PARA PELE {skin_type_enum.value.upper()} ===
+
+{products_data}
+
+Use APENAS estes produtos para montar a rotina de cuidados.
+Tipo de pele confirmado: {skin_type_enum.value}
+"""
+    except Exception as e:
+        return f"Erro ao carregar produtos: {str(e)}"
+
+
+@dermage_agent.system_prompt
+async def get_system_prompt(ctx: RunContext[AnalysisDependencies]) -> str:
+    """System prompt dinâmico com contexto do paciente."""
+    return f"""
+{BASE_SYSTEM_PROMPT}
+
+CONTEXTO DO PACIENTE:
+- Idade: {ctx.deps.age} anos
+- Complexidade da rotina recomendada: {ctx.deps.complexity}
+
+Questionário do paciente:
+{ctx.deps.skin_profile.model_dump_json()}
+"""
+
+
+# Removido output_validator temporariamente para debug
 
 
 def get_age_category(age: int) -> int:
@@ -97,7 +175,6 @@ def get_routine_file(skin_type: SkinTypes, age: int, complexity: str) -> str:
     
     return file_path
 
-
 def load_products_csv(file_path: str) -> str:
     """
     Carrega o conteúdo do arquivo CSV de produtos.
@@ -112,77 +189,75 @@ def load_products_csv(file_path: str) -> str:
 
 
 async def analyze_skin(ai_request: AIRequest) -> AnalysisResponse:
-    deps = ai_request.skin_profile
+    """
+    Analisa a pele do paciente usando IA com validação e retry automáticos.
+    
+    Args:
+        ai_request: Requisição contendo perfil do paciente e imagens
+        
+    Returns:
+        AnalysisResponse: Análise completa da pele com rotina personalizada
+        
+    Raises:
+        HTTPException: Se exceder limite de quota ou houver erro fatal
+    """
+    skin_profile = ai_request.skin_profile
     
     # Extrair idade do questionário ou usar valor padrão
-    age = deps.age if deps.age else 30
+    age = skin_profile.age if skin_profile.age else 30
     
     # Determinar complexidade baseado no número de perguntas e respostas
-    total_answer_length = sum(len(q.answer) for q in deps.questions)
-    complexity = "COMPLETA" if total_answer_length > 150 or len(deps.questions) > 5 else "SIMPLES"
+    total_answer_length = sum(len(q.answer) for q in skin_profile.questions)
+    complexity = "COMPLETA" if total_answer_length > 150 or len(skin_profile.questions) > 5 else "SIMPLES"
     
-    print(f"Iniciando análise - Idade: {age}, Complexidade: {complexity}")
+    print(f"[ANÁLISE] Iniciando - Idade: {age}, Complexidade: {complexity}")
     
-    # Carregar produtos de TODOS os tipos de pele (mas será apenas 1 chamada à API)
-    all_products = []
-    for skin_type in SkinTypes:
-        try:
-            routine_file = get_routine_file(skin_type, age, complexity)
-            products_data = load_products_csv(routine_file)
-            all_products.append(f"\n=== PRODUTOS PARA PELE {skin_type.value.upper()} ===\n{products_data}")
-        except Exception as e:
-            print(f"Erro ao carregar produtos para pele {skin_type.value}: {e}")
-    
-    combined_products = "\n".join(all_products)
-    
-    # Análise ÚNICA com todos os produtos
-    final_prompt = f"""
-    {PROMPT}
-    
-    Lista de produtos disponíveis ORGANIZADOS POR TIPO DE PELE:
-    {combined_products}
-    
-    INSTRUÇÕES IMPORTANTES:
-    1. Analise a imagem e o questionário para determinar o tipo de pele (seca, mista, oleosa ou normal)
-    2. Use APENAS os produtos da seção correspondente ao tipo de pele identificado
-    3. Monte uma rotina de cuidados completa (manhã e noite) usando os produtos corretos
-    4. Garanta que o campo "skin_type" na resposta corresponda ao tipo de pele para o qual você selecionou os produtos
-    """
-    
-    final_agent = Agent(
-        "google-gla:gemini-2.5-pro",
-        deps_type=SkinProfileRequest,
-        output_type=AnalysisResponse,
-        system_prompt=final_prompt,
-        retries=3
+    # Criar dependencies para o agente (SEM carregar produtos)
+    deps = AnalysisDependencies(
+        skin_profile=skin_profile,
+        age=age,
+        complexity=complexity
     )
     
+    # Executar análise com retry inteligente
     max_retries = 2
-    retry_delay = 60  # 60 segundos para respeitar o rate limit
+    retry_delay = 60
     
-    # Análise com retry respeitando rate limit
     for attempt in range(max_retries):
         try:
-            print(f"Tentativa {attempt + 1} - Gerando análise completa...")
-            result = await final_agent.run(ai_request.images, deps=deps)
-            final_response = AnalysisResponse.model_validate(result.output)
-            print("Análise concluída com sucesso!")
-            return final_response
+            print(f"[ANÁLISE] Tentativa {attempt + 1}/{max_retries}")
+            
+            # O agente vai usar a tool para carregar produtos quando necessário
+            result = await dermage_agent.run(
+                ai_request.images,
+                deps=deps
+            )
+            
+            print(f"[ANÁLISE] Concluída com sucesso! Tipo de pele: {result.data.skin_type.value}")
+            return result.data
+            
         except Exception as e:
             error_message = str(e)
-            print(f"Erro na análise (tentativa {attempt + 1}): {error_message}")
+            print(f"[ERRO] Tentativa {attempt + 1} falhou: {error_message}")
             
-            # Se for erro de quota, aguardar mais tempo
+            # Tratar erro de quota/rate limit
             if "RESOURCE_EXHAUSTED" in error_message or "429" in error_message:
                 if attempt < max_retries - 1:
-                    print(f"Limite de quota atingido. Aguardando {retry_delay} segundos...")
+                    print(f"[RETRY] Limite de quota atingido. Aguardando {retry_delay}s...")
                     await asyncio.sleep(retry_delay)
                 else:
                     raise HTTPException(
                         status_code=429,
                         detail="Limite de requisições da API atingido. Aguarde 1 minuto e tente novamente."
                     )
+            # Outros erros
             elif attempt < max_retries - 1:
-                await asyncio.sleep(retry_delay * (attempt + 1))
+                wait_time = retry_delay * (attempt + 1)
+                print(f"[RETRY] Aguardando {wait_time}s antes de tentar novamente...")
+                await asyncio.sleep(wait_time)
             else:
-                raise
+                # Re-lançar erro após todas as tentativas
+                raise HTTPException(
+                    status_code=500,
+                    detail=f"Erro ao processar análise: {error_message}"
+                )

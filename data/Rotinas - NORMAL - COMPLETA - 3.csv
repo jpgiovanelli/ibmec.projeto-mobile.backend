@@ -1,0 +1,77 @@
+" ""Glycolique Sabonete"": {
+        name: ""Glycolique Sabonete"", 
+        url: ""https://www.dermage.com.br/glycolique-sabonete-liquido-p15874/p"", 
+        description: ""Promove limpeza facial profunda enquanto auxilia na desobstrução dos poros."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/168097-950-950/2024.05.29---DERMAGe01336.jpg?v=638604728245300000"",
+        category: ""Limpeza"",
+        sku: ""521""
+    }
+",,,,,,,,,,,,
+,,,,,,,,,,,,
+" ""Improve C 30 Biotic Sérum 15g"": { 
+        name: ""Improve C 30 Biotic Sérum 15g"", 
+        url: ""https://www.dermage.com.br/improve-c-30-serum-biotic---15ml---dermage/p"", 
+        description: ""Sérum antioxidante com 30% de vitamina C nano (maior concentração do mercado). Protege contra agressões externas, corrige rugas profundas e perda de firmeza."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/168307-950-950/IMPROVE-C-10-BIOTIC-SERUM-30G.png"",
+        category: ""Vitamina C"",
+        sku: ""984""
+    }
+",,,,,,,,,,,,
+,,,,,,,,,,,,
+"""EXOCARE CELL REPAIR"": { 
+        name: ""EXOCARE CELL REPAIR"", 
+        url: ""https://www.dermage.com.br/exocare-cell-repair/p"", 
+        description: ""Sérum anti-idade com reparação do DNA celular: regenera, fortalece e protege a pele."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/170447-950-950/1000x1000-I-EXOCARE-CELL-REPAIR.png?v=638919147189900000"",
+        category: ""Anti Idade"",
+        sku: ""972""
+    }",,,,,,,,,,,OU," ""EXOCARE PDRN"": { 
+        name: ""EXOCARE PDRN"", 
+        url: ""https://www.dermage.com.br/exocare-pdrn/p"", 
+        description: ""Sérum regenerador com PDRN 500ppm. Promove potente ação regeneradora, suaviza a pele e estimula a síntese de colágeno."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/168307-950-950/IMPROVE-C-10-BIOTIC-SERUM-30G.png"",
+        category: ""Rosto"",
+        sku: ""847""
+    }
+"
+,,,,,,,,,,,,
+"Age Inverse Firm & Lift"": { 
+        name: ""Age Inverse Firm & Lift"", 
+        url: ""https://www.dermage.com.br/age-inverse-firm-lift/p"", 
+        description: ""Tratamento de rugas e flacidez."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/169085-950-950/AGE-INVERSE-FIRM-E-LIFT_1000x1000.jpg"", 
+        category: ""Anti Idade"",
+        sku: ""661""
+    }
+",,,,,,,,,,,,
+,,,,,,,,,,,,
+"Opções Protetor solar: 
+",,,,,,,,,,,,
+,,,,,,,,,,,,
+" ""Photoage Water FPS 50"": {
+        name: ""Photoage Water FPS 50"", 
+        url: ""https://www.dermage.com.br/photoage-water-fps50-filtro-solar-aquoso-sem-cor/p"", 
+        description: ""O filtro solar aquoso revolucionário com FPS50 e PPD20, textura Acqua Fluid ultraleve e toque seco que cria uma película protetora invisível sem resíduo esbranquiçado."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/170037-950-950/1000X1000-I-PHOTOAGE-WATER-2025.png?v=638893319354400000"",
+        category: ""Proteção Solar"",
+        sku: ""497""
+    }",,,,,,,,,,,,
+,,,,,,,,,,,,
+"""Photoage Water Color FPS 60"": {
+        name: ""Photoage Water Color FPS 60"", 
+        url: ""https://www.dermage.com.br/photoage-water-fps50-filtro-solar-aquoso-sem-cor/p"", 
+        description: ""O filtro solar que revolucionou sua proteção diária, agora em versão com cor. Com FPS60 e FPUVA 23, o Photoage Water Color chega com alta proteção UVA/UVB."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/168292-950-950/PHOTOAGE-WATER-COLOR-FPS-60.png?v=638641833471430000"",
+        category: ""Proteção Solar"",
+        sku: ""611""
+    }",,,,,,,,,,,,
+,,,,,,,,,,,,
+"""Photoage Stick Incolor FPS 99"": {
+        name: ""Photoage Stick Incolor FPS 99"", 
+        url: ""https://www.dermage.com.br/photoage-stick-incolor-fps99/p"", 
+        description: ""O filtro solar aquoso revolucionário com FPS50 e PPD20, textura Acqua Fluid ultraleve e toque seco que cria uma película protetora invisível sem resíduo esbranquiçado."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/170037-950-950/1000X1000-I-PHOTOAGE-WATER-2025.png?v=638893319354400000"",
+        category: ""Proteção Solar"",
+        sku: ""497""
+    }
+",,,,,,,,,,,,
