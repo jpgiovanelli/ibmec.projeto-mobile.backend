@@ -32,7 +32,6 @@ IMPORTANTE - PADRÃO DE RESPOSTA:
 3. ROUTINE: Para cada produto, forneça:
    - title: Nome exato do produto do CSV
    - description: Descrição expandida incluindo COMO USAR o produto (seja específico: "Aplique 3-5 gotas...", "Aplique sobre a pele úmida...", etc)
-   - price: Use um valor placeholder como 100
    - image_url: URL exata da imagem do CSV
    - link: URL exato do produto do CSV
 

@@ -1,0 +1,68 @@
+"""Secatriz Foam"": {
+        name: ""Secatriz Foam"", 
+        url: ""https://www.dermage.com.br/secatriz-foam-/p"", 
+        description: ""Remove impurezas e o excesso de oleosidade enquanto suaviza e trata a pele."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/168870-950-950/SECATRIZ-FOAM_01.png.png?v=638774852863000000"",
+        category: ""Limpeza"",
+        sku: ""902""
+    }"
+
+" ""Improve C 20 Biotic Sérum 15g"": { 
+        name: ""Improve C 20 Biotic Sérum 15g"", 
+        url: ""https://www.dermage.com.br/improve-c-20-serum-p15709/p"", 
+        description: ""Sérum antioxidante com 20% de vitamina C nano e tecnologia Microbioma Expert. Protege contra agressões externas, reduz rugas e linhas finas, e uniformiza o tom da pele."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/169371-950-950/Adobe-Express---file--13-.png.png?v=638821562172800000"",
+        category: ""Vitamina C"",
+        sku: ""536""
+    }
+"
+
+"""Hyaluage Acqua Filler B3+B5"": {
+        name: ""Hyaluage Acqua Filler B3+B5"", 
+        url: ""https://www.dermage.com.br/hyaluage-acqua-filler/p"", 
+        description: ""Sérum hidratante e anti-idade de uso diário com ação firmadora e redensificadora. Reduz rugas e linhas, hidrata e rejuvenesce a pele."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/170514-950-950/01.jpg?v=638926863861900000"",
+        category: ""Anti Idade"",
+        sku: ""900""
+    }
+"
+
+"""EXOCARE CELL REPAIR"": { 
+        name: ""EXOCARE CELL REPAIR"", 
+        url: ""https://www.dermage.com.br/exocare-cell-repair/p"", 
+        description: ""Sérum anti-idade com reparação do DNA celular: regenera, fortalece e protege a pele."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/170447-950-950/1000x1000-I-EXOCARE-CELL-REPAIR.png?v=638919147189900000"",
+        category: ""Anti Idade"",
+        sku: ""972""
+    }"
+
+"Opções Protetor solar: 
+"
+
+" ""Photoage Water FPS 50"": {
+        name: ""Photoage Water FPS 50"", 
+        url: ""https://www.dermage.com.br/photoage-water-fps50-filtro-solar-aquoso-sem-cor/p"", 
+        description: ""O filtro solar aquoso revolucionário com FPS50 e PPD20, textura Acqua Fluid ultraleve e toque seco que cria uma película protetora invisível sem resíduo esbranquiçado."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/170037-950-950/1000X1000-I-PHOTOAGE-WATER-2025.png?v=638893319354400000"",
+        category: ""Proteção Solar"",
+        sku: ""497""
+    }"
+
+"""Photoage Water Color FPS 60"": {
+        name: ""Photoage Water Color FPS 60"", 
+        url: ""https://www.dermage.com.br/photoage-water-fps50-filtro-solar-aquoso-sem-cor/p"", 
+        description: ""O filtro solar que revolucionou sua proteção diária, agora em versão com cor. Com FPS60 e FPUVA 23, o Photoage Water Color chega com alta proteção UVA/UVB."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/168292-950-950/PHOTOAGE-WATER-COLOR-FPS-60.png?v=638641833471430000"",
+        category: ""Proteção Solar"",
+        sku: ""611""
+    }"
+
+"""Photoage Stick Incolor FPS 99"": {
+        name: ""Photoage Stick Incolor FPS 99"", 
+        url: ""https://www.dermage.com.br/photoage-stick-incolor-fps99/p"", 
+        description: ""O filtro solar aquoso revolucionário com FPS50 e PPD20, textura Acqua Fluid ultraleve e toque seco que cria uma película protetora invisível sem resíduo esbranquiçado."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/170037-950-950/1000X1000-I-PHOTOAGE-WATER-2025.png?v=638893319354400000"",
+        category: ""Proteção Solar"",
+        sku: ""497""
+    }
+"

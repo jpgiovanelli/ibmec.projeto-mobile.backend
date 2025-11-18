@@ -1,0 +1,50 @@
+" ""Glycolique Sabonete"": {
+        name: ""Glycolique Sabonete"", 
+        url: ""https://www.dermage.com.br/glycolique-sabonete-liquido-p15874/p"", 
+        description: ""Promove limpeza facial profunda enquanto auxilia na desobstrução dos poros."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/168097-950-950/2024.05.29---DERMAGe01336.jpg?v=638604728245300000"",
+        category: ""Limpeza"",
+        sku: ""521""
+    }
+"
+
+"Age Inverse Firm & Lift"": { 
+        name: ""Age Inverse Firm & Lift"", 
+        url: ""https://www.dermage.com.br/age-inverse-firm-lift/p"", 
+        description: ""Tratamento de rugas e flacidez."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/169085-950-950/AGE-INVERSE-FIRM-E-LIFT_1000x1000.jpg"", 
+        category: ""Anti Idade"",
+        sku: ""661""
+    }
+"
+
+"Opções Protetor solar: 
+"
+
+" ""Photoage Water FPS 50"": {
+        name: ""Photoage Water FPS 50"", 
+        url: ""https://www.dermage.com.br/photoage-water-fps50-filtro-solar-aquoso-sem-cor/p"", 
+        description: ""O filtro solar aquoso revolucionário com FPS50 e PPD20, textura Acqua Fluid ultraleve e toque seco que cria uma película protetora invisível sem resíduo esbranquiçado."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/170037-950-950/1000X1000-I-PHOTOAGE-WATER-2025.png?v=638893319354400000"",
+        category: ""Proteção Solar"",
+        sku: ""497""
+    }"
+
+"""Photoage Water Color FPS 60"": {
+        name: ""Photoage Water Color FPS 60"", 
+        url: ""https://www.dermage.com.br/photoage-water-fps50-filtro-solar-aquoso-sem-cor/p"", 
+        description: ""O filtro solar que revolucionou sua proteção diária, agora em versão com cor. Com FPS60 e FPUVA 23, o Photoage Water Color chega com alta proteção UVA/UVB."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/168292-950-950/PHOTOAGE-WATER-COLOR-FPS-60.png?v=638641833471430000"",
+        category: ""Proteção Solar"",
+        sku: ""611""
+    }"
+
+"""Photoage Stick Incolor FPS 99"": {
+        name: ""Photoage Stick Incolor FPS 99"", 
+        url: ""https://www.dermage.com.br/photoage-stick-incolor-fps99/p"", 
+        description: ""O filtro solar aquoso revolucionário com FPS50 e PPD20, textura Acqua Fluid ultraleve e toque seco que cria uma película protetora invisível sem resíduo esbranquiçado."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/170037-950-950/1000X1000-I-PHOTOAGE-WATER-2025.png?v=638893319354400000"",
+        category: ""Proteção Solar"",
+        sku: ""497""
+    }
+"

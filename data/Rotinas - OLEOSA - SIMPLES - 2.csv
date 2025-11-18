@@ -1,0 +1,40 @@
+"""Secatriz Salic"": {
+        name: ""Secatriz Salic"", 
+        url: ""https://www.dermage.com.br/sabonete-liquido-facial-secatriz-salic/p"", 
+        description: ""Promove uma Limpeza Facial profunda e eficaz no controle da oleosidade da pele, sem causar agressões ou ressecamentos."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/169611-950-950/2024.05.29---DERMAGe01332.jpg?v=638828270764700000"",
+        category: ""Anti Acne"",
+        sku: ""154""
+    }
+"
+
+"""Secatriz Prebio Control"": {
+        name: ""Secatriz Prebio Control"", 
+        url: ""https://www.dermage.com.br/hidratante-pele-oleosa-secatriz-prebio/p"", 
+        description: ""Proporciona o reequilíbrio da microflora cutânea, ajudando no controle da oleosidade enquanto promove a hidratação do rosto de acordo com sua necessidade."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/169381-950-950/2024.05.29---DERMAGe01333.jpg?v=638821529154270000"",
+        category: ""Anti Acne"",
+        sku: ""231""
+    }
+"
+
+"Opções Protetor solar: 
+"
+
+" ""Photoage Water FPS 50"": {
+        name: ""Photoage Water FPS 50"", 
+        url: ""https://www.dermage.com.br/photoage-water-fps50-filtro-solar-aquoso-sem-cor/p"", 
+        description: ""O filtro solar aquoso revolucionário com FPS50 e PPD20, textura Acqua Fluid ultraleve e toque seco que cria uma película protetora invisível sem resíduo esbranquiçado."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/170037-950-950/1000X1000-I-PHOTOAGE-WATER-2025.png?v=638893319354400000"",
+        category: ""Proteção Solar"",
+        sku: ""497""
+    }"
+
+"""Photoage Water Color FPS 60"": {
+        name: ""Photoage Water Color FPS 60"", 
+        url: ""https://www.dermage.com.br/photoage-water-fps50-filtro-solar-aquoso-sem-cor/p"", 
+        description: ""O filtro solar que revolucionou sua proteção diária, agora em versão com cor. Com FPS60 e FPUVA 23, o Photoage Water Color chega com alta proteção UVA/UVB."", 
+        image: ""https://dermage.vteximg.com.br/arquivos/ids/168292-950-950/PHOTOAGE-WATER-COLOR-FPS-60.png?v=638641833471430000"",
+        category: ""Proteção Solar"",
+        sku: ""611""
+    }"

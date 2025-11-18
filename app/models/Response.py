@@ -6,7 +6,6 @@ from pydantic import BaseModel
 class SkinCareProduct(BaseModel):
     title: str
     description: str
-    price: float
     image_url: str
     link: str
 
